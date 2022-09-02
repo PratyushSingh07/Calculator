@@ -1,5 +1,6 @@
 package com.example.calculator
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val btnC = findViewById<Button>(R.id.button_C)
-        val bntAc = findViewById<Button>(R.id.button_AC)
+        val bntSc = findViewById<Button>(R.id.button_SC)
         val btn0 = findViewById<Button>(R.id.button_0)
         val btn1 = findViewById<Button>(R.id.button_1)
         val btn2 = findViewById<Button>(R.id.button_2)
@@ -48,7 +49,6 @@ class MainActivity : AppCompatActivity() {
             for(i in 0..str.length-1){
                 if(str[i]>='0' && str[i]<='9')temp+=str[i]
                 else{
-                    // println("0000")
                     sym.add(str[i].toString())
                     nums.add(temp.toInt())
                     // println(temp)
@@ -68,7 +68,6 @@ class MainActivity : AppCompatActivity() {
                         findViewById<TextView>(R.id.result_tv).text=s
                     }
                 }
-                // println(nums.peek())
                 var s:String =nums.peek().toString();
                 findViewById<TextView>(R.id.result_tv).text=s
             }
@@ -175,6 +174,11 @@ class MainActivity : AppCompatActivity() {
             txt.text = "0"
             var res=findViewById<TextView>(R.id.result_tv)
             res.text="0"
+        }
+        bntSc.setOnClickListener {
+            val intent=Intent(this,ScientificActivity::class.java)
+            startActivity(intent)
+//             findViewById<TextView>(R.id.result_tv).text="pratyush sexy"
         }
     }
 }
